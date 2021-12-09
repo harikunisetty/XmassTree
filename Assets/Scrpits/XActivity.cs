@@ -1,70 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class XActivity : MonoBehaviour
 {
+    [Header("UIScaler")]
+    [SerializeField] float resoX;
+    [SerializeField] float resoY;
+    private CanvasScaler can;
+
     public GameObject  yellowButton, PinkButton, GreenBAllButton, lighjtYellowButton, purpleBallButton, keyButton, bottle;
     public GameObject yellowStar,lightYellow,purpleBall,PinkBall,GreenBall;
-    public AudioSource KeySound, bottleSound, YellowStarSound, purplesound, greenSound, pinkSound, lightyellow = default;
-    public AudioClip betterluckNextTime, oops, amazing, Excelent, cool, Brilliant = null;
+    public AudioSource KeySound, bottleSound = default;
+    public AudioClip betterluckNextTime, oops = null;
     public GameObject[] buttons;
 
-    public float startTime, timer, resettime;
+    [SerializeField] int loadLevelTwo = 2;
+
     void Start()
     {
-        yellowStar.SetActive(false);
-        lightYellow.SetActive(false);
-        purpleBall.SetActive(false);
-        PinkBall.SetActive(false);
-        GreenBall.SetActive(false);
+        can = GetComponent<CanvasScaler>();
+        SetInfo();
 
-        startTime = timer;
-        
     }
-    public void Purpleball()
+    public void SetInfo()
     {
-        timer -= Time.deltaTime;
-       
-        if (timer <=0f)
-        {
-            timer = resettime;
-            purpleBallButton.SetActive(false);
-        }
+        resoX = (float)Screen.currentResolution.width;
+        resoY = (float)Screen.currentResolution.height;
+        can.referenceResolution = new Vector2(resoX, resoY);
+    }
+   /* public void Purpleball()
+    {  
+        purpleBallButton.SetActive(false);
         purpleBall.SetActive(true);
-        purplesound.PlayOneShot(Excelent);
-
-
     }
     public void YellowButton()
-    {  
+    {
         yellowStar.SetActive(true);
-       /* YellowStarSound.PlayOneShot(amazing);*/
         yellowButton.SetActive(false);
-     
+
     }
     public void greenBall()
     {
         GreenBall.SetActive(true);
-       /* greenSound.PlayOneShot(cool);*/
         GreenBAllButton.SetActive(false);
-       
     }
     public void pinkBall()
     {
         PinkBall.SetActive(true);
         PinkButton.SetActive(false);
-       /* pinkSound.PlayOneShot(Brilliant);
-*/
     }
-    public void LighjtYellow()
+    public void LightYellow()
     {
         lightYellow.SetActive(true);
         lighjtYellowButton.SetActive(false);
-       /* lightyellow.PlayOneShot(amazing);*/
     }
-   /* public void KeyAudio()
+    public void KeyAudio()
     {
         bottleSound.PlayOneShot(oops);
     }
@@ -72,8 +64,39 @@ public class XActivity : MonoBehaviour
     {
         KeySound.PlayOneShot(betterluckNextTime);
     }
+    *//* public void Update()
+     {
+         GameManager.Instance.ActiveButtons("changemanager")
+     }*/
+
     public void Update()
     {
-        *//*GameManager.Instance.ActiveButtons("changemanager")*//*
-    }*/
+        if (buttons.Length != 0)
+        {
+            for (int j = buttons.Length; j >= 0; j++)
+            {
+                buttons[0].SetActive(true);
+                buttons[1].SetActive(true);
+                buttons[2].SetActive(true);
+                buttons[3].SetActive(true);
+                buttons[4].SetActive(true);
+            }
+        }
+        else
+        {
+            for (int j = buttons.Length; j <= 0; j++)
+            {
+                buttons[0].SetActive(false);
+                buttons[1].SetActive(false);
+                buttons[2].SetActive(false);
+                buttons[3].SetActive(false);
+                buttons[4].SetActive(false);
+            }
+        }
+        if (buttons.Length == 0)
+        {
+            // you should mentions scene name here .......!
+            GameManager.Instance.LoadNextLevel(loadLevelTwo);
+        }
+    }
 }
