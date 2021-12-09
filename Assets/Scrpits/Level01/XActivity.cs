@@ -22,7 +22,11 @@ public class XActivity : MonoBehaviour
     {
         can = GetComponent<CanvasScaler>();
         SetInfo();
-
+        yellowStar.SetActive(false);
+        lightYellow.SetActive(false);
+        purpleBall.SetActive(false);
+        PinkBall.SetActive(false);
+        GreenBall.SetActive(false);
     }
     public void SetInfo()
     {
