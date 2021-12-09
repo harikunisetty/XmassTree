@@ -28,17 +28,12 @@ public class GameManager : MonoBehaviour
     {
        
     }
-
-
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "MainMenuUi")
         {
             return;
         }
-       
-           
-        
     }
     public void ReloadLevel()
     {

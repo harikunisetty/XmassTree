@@ -14,9 +14,9 @@ public class XActivity : MonoBehaviour
     public GameObject yellowStar,lightYellow,purpleBall,PinkBall,GreenBall;
     public AudioSource KeySound, bottleSound = default;
     public AudioClip betterluckNextTime, oops = null;
-    public GameObject[] buttons;
+    /*public GameObject[] buttons;*/
 
-    [SerializeField] int loadLevelTwo = 2;
+  
 
     void Start()
     {
@@ -30,8 +30,8 @@ public class XActivity : MonoBehaviour
         resoY = (float)Screen.currentResolution.height;
         can.referenceResolution = new Vector2(resoX, resoY);
     }
-   /* public void Purpleball()
-    {  
+    public void Purpleball()
+    {
         purpleBallButton.SetActive(false);
         purpleBall.SetActive(true);
     }
@@ -64,39 +64,28 @@ public class XActivity : MonoBehaviour
     {
         KeySound.PlayOneShot(betterluckNextTime);
     }
-    *//* public void Update()
-     {
-         GameManager.Instance.ActiveButtons("changemanager")
+   /* public void Update()
+    {
+        GameManager.Instance.ActiveButtons("changemanager")
      }*/
 
-    public void Update()
-    {
-        if (buttons.Length != 0)
-        {
-            for (int j = buttons.Length; j >= 0; j++)
-            {
-                buttons[0].SetActive(true);
-                buttons[1].SetActive(true);
-                buttons[2].SetActive(true);
-                buttons[3].SetActive(true);
-                buttons[4].SetActive(true);
-            }
-        }
-        else
-        {
-            for (int j = buttons.Length; j <= 0; j++)
-            {
-                buttons[0].SetActive(false);
-                buttons[1].SetActive(false);
-                buttons[2].SetActive(false);
-                buttons[3].SetActive(false);
-                buttons[4].SetActive(false);
-            }
-        }
-        if (buttons.Length == 0)
-        {
-            // you should mentions scene name here .......!
-            GameManager.Instance.LoadNextLevel(loadLevelTwo);
-        }
-    }
+    /* public void Update()
+     {
+         if (buttons.Length != 0)
+         {
+             for (int j = buttons.Length; j >= 0; j++)
+             {
+                 buttons[0].SetActive(false);
+                 buttons[1].SetActive(false);
+                 buttons[2].SetActive(false);
+                 buttons[3].SetActive(false);
+                 buttons[4].SetActive(false);
+             }
+         }    
+         if (buttons.Length == 0)
+         {
+             // you should mentions scene name here .......!
+             GameManager.Instance.LoadNextLevel(loadLevelTwo);
+         }
+     }*/
 }
