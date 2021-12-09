@@ -7,9 +7,11 @@ public class XActivity : MonoBehaviour
 {
     public GameObject  yellowButton, PinkButton, GreenBAllButton, lighjtYellowButton, purpleBallButton, keyButton, bottle;
     public GameObject yellowStar,lightYellow,purpleBall,PinkBall,GreenBall;
-    public AudioSource KeySound, bottleSound ,YellowStarSound,purplesound,greenSound,pinkSound,lightyellow= default;
-    public AudioClip betterluckNextTime, oops,amazing, Excelent ,cool, Brilliant = null;
+    public AudioSource KeySound, bottleSound, YellowStarSound, purplesound, greenSound, pinkSound, lightyellow = default;
+    public AudioClip betterluckNextTime, oops, amazing, Excelent, cool, Brilliant = null;
     public GameObject[] buttons;
+
+    public float startTime, timer, resettime;
     void Start()
     {
         yellowStar.SetActive(false);
@@ -17,25 +19,35 @@ public class XActivity : MonoBehaviour
         purpleBall.SetActive(false);
         PinkBall.SetActive(false);
         GreenBall.SetActive(false);
+
+        startTime = timer;
         
     }
     public void Purpleball()
     {
+        timer -= Time.deltaTime;
+       
+        if (timer <=0f)
+        {
+            timer = resettime;
+            purpleBallButton.SetActive(false);
+        }
         purpleBall.SetActive(true);
-        purpleBallButton.SetActive(false);
         purplesound.PlayOneShot(Excelent);
+
+
     }
     public void YellowButton()
     {  
         yellowStar.SetActive(true);
-        YellowStarSound.PlayOneShot(amazing);
+       /* YellowStarSound.PlayOneShot(amazing);*/
         yellowButton.SetActive(false);
      
     }
     public void greenBall()
     {
         GreenBall.SetActive(true);
-        greenSound.PlayOneShot(cool);
+       /* greenSound.PlayOneShot(cool);*/
         GreenBAllButton.SetActive(false);
        
     }
@@ -43,16 +55,16 @@ public class XActivity : MonoBehaviour
     {
         PinkBall.SetActive(true);
         PinkButton.SetActive(false);
-        pinkSound.PlayOneShot(Brilliant);
-
+       /* pinkSound.PlayOneShot(Brilliant);
+*/
     }
     public void LighjtYellow()
     {
         lightYellow.SetActive(true);
         lighjtYellowButton.SetActive(false);
-        lightyellow.PlayOneShot(amazing);
+       /* lightyellow.PlayOneShot(amazing);*/
     }
-    public void KeyAudio()
+   /* public void KeyAudio()
     {
         bottleSound.PlayOneShot(oops);
     }
@@ -62,6 +74,6 @@ public class XActivity : MonoBehaviour
     }
     public void Update()
     {
-        /*GameManager.Instance.ActiveButtons("changemanager")*/
-    }
+        *//*GameManager.Instance.ActiveButtons("changemanager")*//*
+    }*/
 }
