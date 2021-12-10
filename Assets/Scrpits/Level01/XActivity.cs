@@ -15,8 +15,8 @@ public class XActivity : MonoBehaviour
     public AudioSource KeySound, bottleSound = default;
     public AudioClip betterluckNextTime, oops = null;
     /*public GameObject[] buttons;*/
+    [SerializeField] bool PurpleBallButton;
 
-  
 
     void Start()
     {
@@ -27,6 +27,8 @@ public class XActivity : MonoBehaviour
         purpleBall.SetActive(false);
         PinkBall.SetActive(false);
         GreenBall.SetActive(false);
+
+        PurpleBallButton = false;
     }
     public void SetInfo()
     {
@@ -35,9 +37,10 @@ public class XActivity : MonoBehaviour
         can.referenceResolution = new Vector2(resoX, resoY);
     }
     public void Purpleball()
-    {
-        purpleBallButton.SetActive(false);
+    {   
         purpleBall.SetActive(true);
+        purpleBallButton.SetActive(false);
+       
     }
     public void YellowButton()
     {
